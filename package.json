@@ -13,13 +13,17 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "bun run dist/server.js",
+    "start": "node dist/server.js",
+    "start:bun": "bun run dist/server.js",
     "socket": "bun run src/socket.ts",
+    "socket:win": "node src/socket.js",
     "setup": "./scripts/setup.sh",
+    "setup:win": "powershell -ExecutionPolicy Bypass -File .\\scripts\\setup.ps1",
     "build": "tsup",
     "build:watch": "tsup --watch",
-    "dev": "bun run build:watch",
-    "pub:release": "bun run build && npm publish"
+    "dev": "npm run build:watch",
+    "dev:bun": "bun run build:watch",
+    "pub:release": "npm run build && npm publish"
   },
   "devDependencies": {
     "@types/bun": "latest",
